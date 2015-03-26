@@ -6,6 +6,19 @@ var express = require('express');
 var fs = require('fs');
 var path = require('path');
 
+// mongo db
+var mongodb = require('mongodb'),
+  Server = mongodb.Server,
+  Db = mongodb.Db,
+  server = new Server('ds029117.mongolab.com', 29117, {auto_reconnect: true}),
+  db = new Db('testbobby', server);
+
+db.open(function (err, client) {
+  client.authenticate('admin', 'admin', function (err, success) {
+    console.log('authenticated!');
+  });
+});
+
 var  app = express();
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({
@@ -31,9 +44,12 @@ function initRoutes() {
 
 initRoutes();
 
+// port switch local/production environment
 var port = process.env.PORT || 3000;
+
 app.listen(port);
-console.log('Server running at: http://localhost:3000');
+
+console.log('Server running at: ' + port);
 
 // Make the app available to the outside
 module.exports = app;

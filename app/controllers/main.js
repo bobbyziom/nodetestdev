@@ -2,8 +2,9 @@
 
 var app = require('../app');
 
+// Route handlers
 function main(req, res) {
-  res.send('Server is up');
+  	res.send('Server is up');
 }
 
 function test(req, res) {
