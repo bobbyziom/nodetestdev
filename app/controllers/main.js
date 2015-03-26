@@ -13,4 +13,4 @@ function test(req, res) {
 // Routes
 app.get('/', main);
 
-app.get('/hej', test);
+app.get('/hello', test);
