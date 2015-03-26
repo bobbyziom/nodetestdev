@@ -5,21 +5,30 @@ var cookieParser = require('cookie-parser');
 var express = require('express');
 var fs = require('fs');
 var path = require('path');
+var mongodb = require('mongodb');
 
-// mongo db
-var mongodb = require('mongodb'),
-  Server = mongodb.Server,
-  Db = mongodb.Db,
-  server = new Server('ds029117.mongolab.com', 29117, {auto_reconnect: true}),
-  db = new Db('testbobby', server);
+/**
+ * Mongodb 
+ */
+var Server = mongodb.Server;
+var Db = mongodb.Db;
+var server = new Server('ds029117.mongolab.com', 29117, {auto_reconnect: true});
+var db = new Db('testbobby', server);
 
+/**
+ * login to database 
+ */
 db.open(function (err, client) {
   client.authenticate('admin', 'admin', function (err, success) {
     console.log('authenticated!');
   });
 });
 
+/**
+ * Experess app instantiation
+ */
 var  app = express();
+app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({
   extended: true
@@ -44,12 +53,19 @@ function initRoutes() {
 
 initRoutes();
 
-// port switch local/production environment
+/**
+ * port switch local/production environment
+ */
 var port = process.env.PORT || 3000;
 
 app.listen(port);
 
 console.log('Server running at: ' + port);
 
-// Make the app available to the outside
-module.exports = app;
+/**
+ * Make the app available to the outside
+ */
+module.exports = {
+  app: app,
+  db: db
+}
