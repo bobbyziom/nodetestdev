@@ -31,7 +31,8 @@ function initRoutes() {
 
 initRoutes();
 
-app.listen(3000);
+var port = process.env.PORT || 3000;
+app.listen(port);
 console.log('Server running at: http://localhost:3000');
 
 // Make the app available to the outside
