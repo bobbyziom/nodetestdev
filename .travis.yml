@@ -1,0 +1,10 @@
+language: node_js
+node_js: 
+- '0.10'
+deploy:
+  provider: heroku
+  api_key:
+    secure: MeuG+M5bJWqGRQTnraEIHixB1HwxMcfJmLdOugXgG5A7RwzNrfUMEK4dlHydBeTPV1QUbFLlqPkNbKsPVzNEEH0UlX8A8FzgeElOKAyYTASFyFoLDZxDx/bEPgassO3Oofx14/kp6cXh9AjI2RSRkkX/anxn7wfh3fFUZ0Rt4vw=
+  app: nodetestdev
+  on:
+    repo: bobbyziom/nodetestdev
