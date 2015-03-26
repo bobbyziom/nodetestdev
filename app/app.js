@@ -14,12 +14,14 @@ var Server = mongodb.Server;
 var Db = mongodb.Db;
 var server = new Server('ds029117.mongolab.com', 29117, {auto_reconnect: true});
 var db = new Db('testbobby', server);
+var mongoUser = 'admin';
+var mongoPw = 'admin';
 
 /**
- * login to database 
+ * login to mongolab database 
  */
 db.open(function (err, client) {
-  client.authenticate('admin', 'admin', function (err, success) {
+  client.authenticate(mongoUser, mongoPw, function (err, success) {
     console.log('authenticated!');
   });
 });
