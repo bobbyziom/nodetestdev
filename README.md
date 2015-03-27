@@ -1,13 +1,7 @@
-# Express server
+# Test expressjs/nodejs server 
 
 ## Running
 
 ```
-node app/app.js
-```
-
-## Static Analysis
-
-```
-grunt
+nodemon app/app.js
 ```
