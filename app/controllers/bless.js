@@ -33,6 +33,21 @@ function return_tested(req, res) {
 
 function bless(req, res) {
 
+	/*
+	 var device = {
+		device_id: ,
+		plan_id :
+		bless: {
+
+		}
+		test: {
+
+		}
+	};
+
+	device.bless = 
+	*/
+	
 	db.collection('blessed').insert(req.body, function(err, records) {
 		if (err) throw err;
 		res.sendStatus(200);
